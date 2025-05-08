@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <ul>
+        {% for book, quantity in cart_items %}
+            <li>{{ book.title }} - Quantity: {{ quantity }}</li>
+        {% empty %}
+            <li>Your cart is empty.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'checkout' %}">Proceed to Checkout</a>
+    <a href="{% url 'book_list' %}">Continue Shopping</a>
+</body>
+</html>
