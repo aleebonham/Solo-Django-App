@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Order, OrderItem
 from books.models import Book
 
-# Create your views here.
 
 def cart(request):
     cart = request.session.get('cart', {})

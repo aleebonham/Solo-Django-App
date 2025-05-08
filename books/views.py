@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Book
 
-# Create your views here.
 def book_list(request):
     books = Book.objects.all()
     query = request.GET.get('q')
