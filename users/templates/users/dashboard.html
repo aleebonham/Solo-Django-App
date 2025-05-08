@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="/static/chart.js"></script>
+    <script src="/static/dashboard.js"></script>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <canvas id="salesChart"></canvas>
+    <script>
+        var ctx = document.getElementById('salesChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ data.labels|safe }},
+                datasets: [{
+                    label: 'Orders per Day',
+                    data: {{ data.values|safe }},
+                    borderColor: 'blue',
+                    fill: false
+                    }]
+                }]
+            }
+        }):
+    </script>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
