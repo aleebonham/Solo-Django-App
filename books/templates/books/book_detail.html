@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ book.title }}</title>
+</head>
+<body>
+    <h1>{{ book.title }}</h1>
+    <p>Author: {{ book.author }}</p>
+    <p>Year: {{ book.year }}</p>
+    <p>Genre: {{ book.genre }}</p>
+    <p>ISBN: {{ book.isbn }}</p>
+    <p>Stock: {{ book.stock }}</p>
+    <form action="{% url 'add_to_cart' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="book_id" value="{{ book.id }}">
+        <input type="number" name="quantity" value="1" min="1" max="{{ book.stock }}">
+        <button type="submit">Add to Cart</button>
+    </form>
+    <a href="{% url 'book_list' %}">Back to list</a>
+</body>
+</html>

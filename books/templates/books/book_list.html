@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Barely Used Bookstore</title>
+</head>
+<body>
+    <h1>Books</h1>
+    <form method="get">
+        <input type="text" name="q" placeholder="Search books..." value="{{ request.GET.q }}">
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+        {% for book in books %}
+            <li><a href="{% url 'book_detail' book.pk %}">{{ book.title }} by {{ book.author }}
+            </a></li>
+        {% empty %}
+            <li>No books found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
