@@ -32,7 +32,7 @@ class Command(BaseCommand):
                         stock=random.randint(5, 20)
                     )
         else:
-            #fake book data
+            #Fake book data
             genres = ['Fiction', 'Non-Fiction', 'Sci-Fi', 'Fantasy', 'Mystery']
             for _ in range(5000):
                 Book.objects.create(
@@ -44,7 +44,7 @@ class Command(BaseCommand):
                     stock=random.randint(5, 20)
                 )
 
-        # fake customers and orders
+        # Fake customers and orders
         for _ in range(100):
             username = fake.user_name()
             user = User.objects.create_user(
@@ -67,4 +67,4 @@ class Command(BaseCommand):
                         quantity=random.randint(1, min(book.stock, 5))
                     )
 
-        self.stdout.write(self.style.SUCCESS('Successfully loaded sample data'))
+        self.stdout.write(self.style.SUCCESS('Successfully loaded data'))

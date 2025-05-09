@@ -6,7 +6,7 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     year = models.IntegerField()
     genre = models.CharField(max_length=50)
-    isbn = models.CharField(max_length=15)
+    isbn = models.CharField(max_length=13, unique=True)
     stock = models.IntegerField(default=0)
 
     def __str__(self):
