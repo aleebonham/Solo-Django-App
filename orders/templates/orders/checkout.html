@@ -5,10 +5,25 @@
 </head>
 <body>
     <h1>Book Adoption</h1>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Confirm Order</button>
-    </form>
+    <h2>Customer Information</h2>
+    <p>Name: {{ customer.name }}</p>
+    <p>Email: {{ customer.email }}</p>
+    <h2>Cart Items</h2>
+    {% if cart_items %}
+        <ul>
+            {% for item in cart_items %}
+                <li>{{ item.book.title }} - Quantity: {{ item.quantity }} - Subtotal: ${{ item.subtotal }}</li>
+            {% endfor %}
+        </ul>
+        <p>Total: ${{ total_price }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Place Order</button>
+        </form>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
     <a href="{% url 'cart %'}">Back to Cart</a>
+    <a href="{% url 'book_list' %}">Continue Shopping</a>
 </body>
 </html>

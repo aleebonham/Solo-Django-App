@@ -4,8 +4,19 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from orders.models import Order 
 from django.db.models import Count, Sum
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+        else:
+            form = UserCreationForm()
+        return render(request, 'registration/signup.html', {'form': form})
 
 def user_login(request):
     if request.method == 'POST':
@@ -28,10 +39,16 @@ def register(request):
 
 @login_required
 def dashboard(request):
+    if request.method == 'POST':
+        customer = request.user.customer
     orders = Order.objects.filter(customer__user=request.user).values('created_date__date').annotate(total=Count('id'))
     data = {'labels': [o['created_date__date'].strftime('%Y-%m-%d') for o in orders],
             'values': [o['total'] for o in orders]}
     return render(request, 'users/dashboard.html', {'data': data})
+
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html', {'user': request.user})
 
 @login_required
 def user_logout(request):

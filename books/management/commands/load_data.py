@@ -8,8 +8,6 @@ import csv
 import os
 
 class Command(BaseCommand):
-    help = 'Load sample book and order data'
-
     def handle(self, *args, **kwargs):
         fake = Faker()
         
@@ -19,32 +17,36 @@ class Command(BaseCommand):
         User.objects.filter(is_staff=False).delete()
 
         csv_path = os.path.join(os.path.dirname(__file__), '../../../data/openlibrary_subset.csv')
+        print(f"CSV path: {csv_path}, Exists: {os.path.exists(csv_path)}")
         if os.path.exists(csv_path):
             with open(csv_path, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
+                    author = row['author']
+                    if not author or author.lower().strip() in ['unknown', 'unknown author']:
+                        author = fake.name()
                     Book.objects.create(
                         title=row['title'],
-                        author=row['author'],
+                        author=author, 
                         year=int(row['year']),
                         genre=row['genre'],
                         isbn=row['isbn'],
-                        stock=random.randint(5, 20)
+                        stock=random.randint(5, 20),
+                        price=10.00
                     )
         else:
-            #Fake book data
             genres = ['Fiction', 'Non-Fiction', 'Sci-Fi', 'Fantasy', 'Mystery']
-            for _ in range(5000):
+            for _ in range(5000):  
                 Book.objects.create(
                     title=fake.sentence(nb_words=4),
                     author=fake.name(),
                     year=random.randint(1900, 2025),
                     genre=random.choice(genres),
                     isbn=fake.isbn13(),
-                    stock=random.randint(5, 20)
+                    stock=random.randint(5, 20),
+                    price=round(random.uniform(5.00, 50.00), 2)
                 )
 
-        # Fake customers and orders
         for _ in range(100):
             username = fake.user_name()
             user = User.objects.create_user(
@@ -61,10 +63,12 @@ class Command(BaseCommand):
                 order = Order.objects.create(customer=customer, status='completed')
                 books = random.sample(list(Book.objects.all()), random.randint(1, 3))
                 for book in books:
+                    quantity = random.randint(1, min(book.stock, 5))
                     OrderItem.objects.create(
                         order=order,
                         book=book,
-                        quantity=random.randint(1, min(book.stock, 5))
+                        quantity=quantity,
+                        price=book.price * quantity
                     )
 
         self.stdout.write(self.style.SUCCESS('Successfully loaded data'))
