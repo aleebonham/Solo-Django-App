@@ -1,3 +1,6 @@
+d4f86548	aleebonham	Wed May 14 22:39:59 2025	Added PythonAnywhere details to README
+fbb1ce4c	aleebonham	Wed May 14 22:11:02 2025	Updated settings.py for PythonAnywhere deployment
+0439d368	CLORA BONHAM	Wed May 14 21:56:59 2025	Attempting to fix pythonanywhere function
 bb0b5e56	CLORA BONHAM	Wed May 14 21:05:10 2025	Updated README
 e040bfd7	CLORA BONHAM	Wed May 14 20:58:36 2025	Fixed TemplateDoesNotExist error, updated models, views, templates, and migrations
 f41edfdf	CLORA BONHAM	Fri May 9 11:15:38 2025	Updated all urls.py files, attempting to fix login page
