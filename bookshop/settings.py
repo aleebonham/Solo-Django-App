@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-5a_=7o1k(17&1$jhq-3)9&!5)l$@@krx=yn$*q#d1_8p$)!pzr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'aleebonham.pythonanywhere.com']
 
 
 # Application definition
@@ -91,6 +91,7 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
+STATIC_ROOT = '/home/codio/workspace/Solo-Django-App/staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

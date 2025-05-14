@@ -19,9 +19,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView
+from books.views import book_list
 from users.views import profile
 
 urlpatterns = [
+    path('', book_list, name='home'),
     path('admin/', admin.site.urls),
     path('accounts/login/', LoginView.as_view(template_name='users/login.html'), name='login'),
     path('accounts/profile/', profile, name='profile'),

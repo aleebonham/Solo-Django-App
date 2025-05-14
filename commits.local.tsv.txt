@@ -1,0 +1,12 @@
+bb0b5e56	CLORA BONHAM	Wed May 14 21:05:10 2025	Updated README
+e040bfd7	CLORA BONHAM	Wed May 14 20:58:36 2025	Fixed TemplateDoesNotExist error, updated models, views, templates, and migrations
+f41edfdf	CLORA BONHAM	Fri May 9 11:15:38 2025	Updated all urls.py files, attempting to fix login page
+ecd622f2	CLORA BONHAM	Thu May 8 23:36:45 2025	Updated a lot of the code
+d1016511	CLORA BONHAM	Thu May 8 17:33:01 2025	Changes to directory structure
+11660405	CLORA BONHAM	Thu May 8 17:20:34 2025	Added user app, authentication, registration for account, and admin dashboard
+add4b62f	CLORA BONHAM	Thu May 8 15:37:41 2025	Orders app with models for cart, checkout, and order
+9f77aede	CLORA BONHAM	Thu May 8 14:50:54 2025	Added data subset from Open Library
+7f6fa5b2	CLORA BONHAM	Wed May 7 23:41:53 2025	Added books app, model, detail views, and templates
+6699f797	CLORA BONHAM	Fri May 2 22:31:54 2025	Changes to structure of files
+88ba04f8	CLORA BONHAM	Fri May 2 21:46:02 2025	Directory structure and files created, bare bones
+9337ac21	aleebonham	Fri May 2 20:20:43 2025	Initial commit
