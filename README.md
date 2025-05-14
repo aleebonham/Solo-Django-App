@@ -4,6 +4,14 @@ Project for assessment 3 programming exercise - Enterprise Software
 Online Bookstore Application with book data coming from an Open Date Source.
 Allows for book browsing, adding to cart, checkout function, user authentication, profile creation, and an admin dashboard.
 
+Deployment
+Cloud Deployment URL: https://aleebonham@pythonanywhere.com
+Github Repository: https://github.com/aleebonham/Solo-Django-App.git
+
+This application is deployed on PythonAnywhere
+-Django 3.2.18 with Python 3.10
+-Manual configuration with a virtual environment
+
 Features
 Browse and search books by title, author, or genre.
 Add books to cart and checkout.
